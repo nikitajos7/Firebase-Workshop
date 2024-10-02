@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import {  createUserWithEmailAndPassword  } from 'firebase/auth';
-import { auth } from '../firebase';
-
 import "../App.css"
 
 const SignUp = () => {
@@ -14,11 +11,17 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
 
+    // TODO: set auth variable here
+
     const onSubmit = async (e) => {
         e.preventDefault()
 
-        if( email && password ){
-            navigate("/login")
+        if( email && password ){ 
+
+            // TODO: call Firebase createUserWithEmailAndPassword function here.
+            // Remember to import and set the auth variable following documentation!
+
+            navigate("/login") // navigate to login page after successfully signed up, , think where to put this!
         }else{
             setErrorMsg("Please enter both email and password.")
         }

@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import {  signInWithEmailAndPassword   } from 'firebase/auth';
-import { auth } from '../firebase';
 import { updateProfile } from "firebase/auth";
-
 
 import "../App.css"
 
@@ -19,8 +16,17 @@ const SignIn = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
+        // TODO Part 1: set auth variable here
+
         if( email && password ){
-            navigate("/")
+
+            // TODO Part 1: call Firebase signInWithEmailAndPassword function here.
+            // Remember to import and set the auth variable following documentation!
+
+            navigate("/") // navigate to home page after successfully signed in, , think where to put this!
+
+            // TODO 2: After successful login, before navigating to Home page, 
+            // let's trim first part of the email for user's display name!
         }
         else{
             setErrorMsg("Please enter both email and password.")

@@ -25,6 +25,7 @@ const AllUsersDisplay = () => {
         onAuthStateChanged(auth,(user)=> {
             if( user ){
                 setCurrUser(user)
+                console.log(user)
             }
         })
 
@@ -38,7 +39,6 @@ const AllUsersDisplay = () => {
                     <h1 className="TextCenter">If you see a secret image below, then you have implemented Firebase signup/login!!</h1>
                     <div className="CenterContainer">
                         { currUser ? <img src="https://www.thewildcardshop.com/wp-content/uploads/2021/02/LWP83.jpg" /> : null }
-                    
                     </div>
                 </div>
 

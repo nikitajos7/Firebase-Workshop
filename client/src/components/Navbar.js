@@ -2,8 +2,6 @@ import { useState, useEffect } from "react"
 import { NavLink, useNavigate } from 'react-router-dom';
 import "../App.css"
 
-import {  signOut } from "firebase/auth";
-import { auth } from '../firebase';
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const Navbar = () => {
@@ -11,14 +9,10 @@ const Navbar = () => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
 
-    const handleLogout = () => {    
-        localStorage.removeItem("available users")           
-        signOut(auth).then(() => {
-            navigate("/login");
-            console.log("Signed out successfully")
-        }).catch((error) => {
-            console.log("Error at logout: ", error)
-        });
+    const handleLogout = () => {   
+        // TODO: call signOut function Firebase 
+                 
+        navigate("/login"); // navigate to login after logging out
     }
 
 
