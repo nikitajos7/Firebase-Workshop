@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { NavLink, useNavigate } from 'react-router-dom';
 import "../App.css"
-
+import { auth } from '../firebase';
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const Navbar = () => {
