@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import "../App.css"
 
 const SignUp = () => {
 
     const navigate = useNavigate();
+    const auth = getAuth();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
@@ -20,8 +22,24 @@ const SignUp = () => {
 
             // TODO: call Firebase createUserWithEmailAndPassword function here.
             // Remember to import and set the auth variable following documentation!
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+            // Signed up 
+            const user = userCredential.user;
+            navigate("/login")
+            // ...
+        })
+            .catch((error) => {   
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            if( errorMessage.includes("email-already-in-use")){
+                setErrorMsg("Email already registered to an account.")
+              } 
+            // ..
+        });
 
-            navigate("/login") // navigate to login page after successfully signed up, , think where to put this!
+
+             // navigate to login page after successfully signed up, , think where to put this!
         }else{
             setErrorMsg("Please enter both email and password.")
         }
